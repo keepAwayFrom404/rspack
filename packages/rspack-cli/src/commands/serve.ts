@@ -105,16 +105,15 @@ export class ServeCommand implements RspackCommand {
 
 				const result = (compilerForDevServer.options.devServer ??= {});
 
-				if (compilerForDevServer.options.experiments.lazyCompilation) {
-					const options =
-						compilerForDevServer.options.experiments.lazyCompilation;
-
+				// if one of compilers enable lazy compilation
+				if (
+					compilers.some(
+						compiler => compiler.options.experiments.lazyCompilation
+					)
+				) {
 					const setupMiddlewares = result.setupMiddlewares;
 					const lazyCompileMiddleware =
-						rspack.experiments.lazyCompilationMiddleware(
-							compilerForDevServer,
-							options
-						);
+						rspack.experiments.lazyCompilationMiddleware(compiler);
 					result.setupMiddlewares = (middlewares, server) => {
 						let finalMiddlewares = middlewares;
 						if (setupMiddlewares) {
