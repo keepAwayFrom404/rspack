@@ -49,7 +49,7 @@ Asset module 输出的文件名称。这个值可以被 [Rule.generator.filename
 ## output.chunkFilename
 
 - **类型：** `string = '[id].js' | (pathData: PathData, assetInfo?: AssetInfo) => string`
-- **默认值：** 当 [`output.filename`](/config/output#outputfilename) 不为函数时，推断 [`output.filename`](/config/output#outputfilename) 推断；否则为 `'[id].js'`。
+- **默认值：** 当 [`output.filename`](/config/output#outputfilename) 不为函数时，根据 [`output.filename`](/config/output#outputfilename) 推断；否则为 `'[id].js'`。
 
 这个选项决定了非初始块文件的名称。有关可能值的详细信息，请参见 [`output.filename`](/config/output#outputfilename) 选项。
 
